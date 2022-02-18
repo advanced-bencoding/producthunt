@@ -1,0 +1,51 @@
+{% extends 'base.html' %} {% block content %} {% if error %}
+
+<div class="alert alert-danger alert-dismissible fade show">
+  <strong>{{ error }}</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+
+{% endif %}
+<br />
+<br />
+<h1>Create</h1>
+
+<form class="form-control" method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
+  {% csrf_token %}
+  <h5>Title:</h5>
+  <input
+    class="form-control"
+    type="text"
+    name="title"
+    placeholder="Title"
+  />
+  <h5>Body:</h5>
+  <input
+    class="form-control"
+    type="textbox"
+    name="body"
+    placeholder="Describe your product here"
+  />
+  <h5>URL:</h5>
+  <input
+    class="form-control"
+    type="text"
+    name="url"
+  />
+  <h5>Icon:</h5>
+  <input
+    class="form-control"
+    type="file"
+    name="icon"
+  />
+  <h5>Image:</h5>
+  <input
+    class="form-control"
+    type="file"
+    name="image"
+  />
+  <br />
+  <input class="btn btn-primary" type="submit" value="Add Product" />
+</form>
+
+{% endblock %}
